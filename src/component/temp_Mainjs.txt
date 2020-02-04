@@ -1,0 +1,106 @@
+import React , {Component} from 'react';
+//import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+import logo from '../img15.png';
+import './Main.css';
+import {Button, Form} from 'react-bootstrap';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+export default class Main extends React.Component
+
+    {
+    
+      constructor(props) {
+        super(props)
+    
+        this.state = {
+          
+           config : {'qa.audiencelogy.com':'e0c46ddc4168a98561cc819e0b68b4c6'},
+           data : {
+            username: 'adxadmin',
+            password: '3d801aa532c1cec3ee82d87a99fdf63f',
+            user_agent:'', 
+           ip:'',
+          }
+        
+          
+          }    
+            
+        }
+        
+            changeHandler = e => {
+                this.setState({ [e.target.name]: e.target.value })
+            }
+    
+            submitHandler = e => {
+                e.preventDefault()
+                console.log(this.state)
+                axios
+                    .post('http://qa-wildfly.audiencelogy.com/adxadminapiv4/admin_auth', {data, config})
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+            handleSave = () => {
+              // Navigate to /products
+              this.props.history.replace("/person");
+            };
+           
+  
+    render() {
+      
+
+    const { config, username, password, user_agent,ip } = this.state
+
+  return (
+    <div>
+      <div class="row">
+        <div class="column">
+          <img src={logo} className="App-logo" alt="img" />
+        </div>
+        
+        <div class="column">
+          <div class="container">
+          <form onSubmit={this.submitHandler}  class="align-left">
+            <div class="text-left"> 
+              <Form.Group controlId="formBasic">
+                <h3 class="#001737 mg-b-5">Admin Console</h3>
+                <p class="#8392a5 16px mg-b-40">Welcome back! Please signin to continue.</p>
+              </Form.Group>
+              </div>
+              <div class="text-left"> 
+              <Form.Group controlId="formBasicEmail">
+                  <Form.Label >Email address</Form.Label>
+                  <Form.Control type="text" name="username" value={username} onChange={this.changeHandler}/>
+              </Form.Group>
+              </div>
+              <div class="text-left"> 
+              <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="text" name="password" value={password} onChange={this.changeHandler}/>
+              </Form.Group>
+              </div>
+              <div class="text-left"> 
+              <Form.Group controlId="formBasicCheckbox">
+                  <Form.Check type="checkbox" label="Remember me" />
+              </Form.Group>
+              </div>
+              <div class="text-left"> 
+              <button type="submit" >Sign In</button>
+              <Button as="input" type="submit" value="Submit" />
+               <button onClick={this.handleSave}>Save</button>
+              
+              </div>
+            </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+  }
+
+  

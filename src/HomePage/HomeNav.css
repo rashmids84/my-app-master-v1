@@ -1,0 +1,26 @@
+.navbar-custom { 
+    background-color:#022f6e; 
+    margin-bottom: 50px;
+    
+}
+.Nav {
+    color: aliceblue;
+}
+
+.NavDropdown{
+   
+    color : white !important;
+    
+   
+}
+.dropdown-toggle.nav-link{
+    color : white;
+}
+.rbgwhitelink {
+    color: #FFFFFF;
+}
+#basic-nav-dropdown {
+    color: white;
+    font-weight: bold;
+}
+
