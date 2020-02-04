@@ -50,7 +50,7 @@ export default class ReportTable extends Component {
         var header = Object.keys(this.state.billingReport[0]);
         
         return header.map((Arraykey, index) => { 
-            // console.log("Map FUnction Key:",Arraykey," index:",index, " Rashmi Bewakof:",this.headings[Arraykey]," Deepak :", this.headings[index]);
+            // console.log("Map FUnction Key:",Arraykey," index:",index, "Heading:",this.headings[Arraykey]);
             // console.log("header value from state", Arraykey+"_H");
            return <th key={{Arraykey}+"_"+index}>{this.headings[Arraykey]}</th>
         })
